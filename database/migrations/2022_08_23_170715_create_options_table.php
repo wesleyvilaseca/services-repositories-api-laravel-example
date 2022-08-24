@@ -17,6 +17,8 @@ class CreateOptionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->text('description')->nullable();
+            $table->enum('type', ['multiple', 'unique']);
+            $table->integer('order')->default(0);
             $table->timestamps();
         });
     }
