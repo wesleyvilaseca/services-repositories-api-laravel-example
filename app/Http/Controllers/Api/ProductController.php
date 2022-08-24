@@ -25,18 +25,18 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $brand = $this->productService->getById($id);
-        if (!$brand) {
-            return response()->json(['message' => 'Brand Not Found'], 404);
+        $product = $this->productService->getById($id);
+        if (!$product) {
+            return response()->json(['message' => 'product Not Found'], 404);
         }
 
-        return new ProductResource($brand);
+        return new ProductResource($product);
     }
 
     public function store(StoreUpdateProduct $request)
     {
-        $brand = $this->productService->store($request->all());
-        return (new ProductResource($brand))->response()->setStatusCode(201);
+        $product = $this->productService->store($request->all());
+        return (new ProductResource($product))->response()->setStatusCode(201);
     }
 
     public function update(StoreUpdateProduct $request, $id)
@@ -50,11 +50,11 @@ class ProductController extends Controller
 
     public function delete($id)
     {
-        if (!$brand = $this->productService->getById($id)) {
-            return response()->json(['message' => 'Brand Not Found'], 404);
+        if (!$product = $this->productService->getById($id)) {
+            return response()->json(['message' => 'product Not Found'], 404);
         }
 
-        $this->productService->delete($brand->id);
+        $this->productService->delete($product->id);
 
         return response()->json([], 204);
     }
