@@ -20,7 +20,8 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $per_page = $request->get('per_page', 15);
-        return ProductResource::collection($this->productService->getAll($per_page));
+        $order = $request->get('order', 'asc');
+        return ProductResource::collection($this->productService->getAll($per_page, $order));
     }
 
     public function show($id)

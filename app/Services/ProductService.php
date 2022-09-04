@@ -14,9 +14,9 @@ class ProductService
         $this->repository = $repository;
     }
 
-    public function getAll(int $per_page)
+    public function getAll(int $per_page, string $order)
     {
-        return $this->repository->getAll($per_page);
+        return $this->repository->getAll($per_page, $order);
     }
 
     public function getById(int $id)

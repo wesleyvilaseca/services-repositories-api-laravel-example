@@ -20,9 +20,11 @@ class ProductRepository implements ProductRepositoryInterface
         return $this->entity->find($id);
     }
 
-    public function getAll(int $per_page)
+    public function getAll(int $per_page, string $order)
     {
-        return $this->entity->paginate($per_page);
+        return $this->entity
+            ->orderBy('id', $order)
+            ->paginate($per_page);
     }
 
     public function store($data)
