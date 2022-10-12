@@ -18,7 +18,7 @@ class ProductResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
-            'brand' => new BrandResource($this->brand),
+            'brand' => @$this->brand->name ? $this->brand->name : null, //new BrandResource($this->brand),
             'options' => OptionResource::collection($this->options)
         ];
     }
